@@ -1,0 +1,19 @@
+---- below are 9800 orders
+-- select count(orderid) from raw_orders
+
+---- how come the staging has more? 10131
+-- select count(orderid) from stg_orders
+
+---- some orderids are listed twice in staging
+-- select orderid, count(orderid) as num from stg_orders group by orderid order by num desc
+
+---- looking at the orders in staging one orderid is linked to two product names
+-- select * from stg_orders where orderid = '1510'
+
+---- in the raw orders the id only occurs once
+-- select * from raw_orders where orderid = '1510'
+
+---- in the raw product the productid appears twice
+-- select * from raw_product where productid = 'FUR-FU-10004270'
+
+-- select productid, orderprofit, count(orderid) as numberOfOrders from stg_orders group by productid, orderprofit order by numberOfOrders desc

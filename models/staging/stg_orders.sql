@@ -1,9 +1,3 @@
-{{
-    config(
-        materialized='view'
-    )
-}}
-
 select 
 -- from raw orders
 o.orderid,
