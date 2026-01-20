@@ -6,6 +6,7 @@
 
 ---- some orderids are listed twice in staging
 -- select orderid, count(orderid) as num from stg_orders group by orderid order by num desc
+select orderid, count(orderid) as numb from stg_orders group by orderid having numb > 1
 
 ---- looking at the orders in staging one orderid is linked to two product names
 -- select * from stg_orders where orderid = '1510'
@@ -19,3 +20,17 @@
 -- select productid, orderprofit, count(orderid) as numberOfOrders from stg_orders group by productid, orderprofit order by numberOfOrders desc
 
 -- select * from {{ ref('delivery_team')}}
+
+---- 1418 is a duplicate
+-- select orderid, count(orderid) as numb from raw_orders group by orderid order by numb desc
+-- select orderid, count(orderid) as numb from raw_orders group by orderid having numb > 1
+
+-- select * from raw.globalmart.orders where orderid = '1418'
+
+---- text orderid so that does not work...
+--select max(orderid) as max from raw.globalmart.orders 
+
+-- select * from raw.globalmart.orders where orderid = '1418' and productid = 'FUR-FU-10001706'
+
+---- returns an error because dbt adds limit to the query
+-- delete from raw.globalmart.orders where orderid = '1418' and productid = 'FUR-FU-10001706'
