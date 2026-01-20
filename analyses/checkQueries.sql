@@ -17,3 +17,5 @@
 -- select * from raw_product where productid = 'FUR-FU-10004270'
 
 -- select productid, orderprofit, count(orderid) as numberOfOrders from stg_orders group by productid, orderprofit order by numberOfOrders desc
+
+-- select * from {{ ref('delivery_team')}}
