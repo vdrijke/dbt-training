@@ -1,0 +1,5 @@
+version: 2
+
+macros:
+  - name: markup
+    description: calculates the markup of the price
